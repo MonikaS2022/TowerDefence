@@ -17,7 +17,7 @@ namespace TowerDefence.Enemies
 
         public override void Update()
         {
-            base.Update();
+            position.X += 1;
         }
 
         public override void Draw(SpriteBatch spriteBatch)

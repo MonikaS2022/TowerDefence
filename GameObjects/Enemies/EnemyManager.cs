@@ -8,7 +8,7 @@ namespace TowerDefence.Enemies
 {
     public class EnemyManager
     {
-        public List<Enemy> enemyList;
+        public static List<Enemy> enemyList;
 
         public EnemyManager()
         {
@@ -18,7 +18,10 @@ namespace TowerDefence.Enemies
 
         public void Update()
         {
-
+            foreach(Enemy enemy in enemyList)
+            {
+                enemy.Update();
+            }
         }
     }
 }

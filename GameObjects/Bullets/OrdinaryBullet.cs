@@ -10,19 +10,21 @@ namespace TowerDefence.Bullets
 {
     public class OrdinaryBullet : Bullet
     {
-        public OrdinaryBullet(Vector2 position, Texture2D texture) : base(position, texture)
-        {
+        Vector2 direction;
+        float speed;
 
+        public OrdinaryBullet(Vector2 direction, Vector2 position, Texture2D texture) : base(position, texture)
+        {
+            this.direction = direction;
+            //this.speed = speed;
+            speed = 15;
         }
 
         public override void Update()
         {
-
+            position += direction*speed;
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-
-        }
+       
     }
 }

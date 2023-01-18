@@ -1,6 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SharpDX.Direct2D1;
 using System.Collections.Generic;
+using TowerDefence.Enemies;
+using TowerDefence.Towers;
+using SpriteBatch = Microsoft.Xna.Framework.Graphics.SpriteBatch;
 
 namespace TowerDefence
 {
@@ -67,19 +71,36 @@ namespace TowerDefence
         public void Redraw(List<Towers.Tower> drawables)
         {
             //Create a new spritebatch to collect textures.
+
             SpriteBatch sb = new SpriteBatch(device);
             //Clear the backbuffer.
-            device.Clear(Color.Transparent);
+
             //Set the render target of the device to our renderTarget.
             device.SetRenderTarget(renderTarget);
             //Begin drawing to the render target.
-            sb.Begin();
 
+            sb.Begin();
+            device.Clear(Color.White);
+
+            sb.Draw(TextureManager.texBackground, Vector2.Zero, Color.White);
             //Draw all the objects in the list.
+            
+                foreach (OrdinaryEnemy enemy in EnemyManager.enemyList)
+                {
+                    sb.Draw(enemy.texture, enemy.position, Color.White);
+                }
+            
             foreach (var e in drawables)
             {
                 e.Draw(sb);
             }
+
+            foreach (Tower t in Game1.towerManager.towerList)
+            {
+                sb.Draw(t.texture, t.position, Color.White);
+            }
+
+
 
             sb.End();
 

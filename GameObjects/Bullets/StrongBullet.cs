@@ -20,9 +20,5 @@ namespace TowerDefence.Bullets
 
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-
-        }
-    }
+    } 
 }

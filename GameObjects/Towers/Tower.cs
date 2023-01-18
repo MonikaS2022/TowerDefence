@@ -11,6 +11,7 @@ namespace TowerDefence.Towers
 {
     public abstract class Tower : GameObject
     {
+        public int radius;
 
         public Rectangle hitBox;
 
@@ -24,9 +25,16 @@ namespace TowerDefence.Towers
 
         }
 
+        public virtual void Update(double deltaTime)
+        {
+            
+        }
+
         public virtual void Draw()
         {
 
         }
+
+        
     }
 }

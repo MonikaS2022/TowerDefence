@@ -10,13 +10,14 @@ namespace TowerDefence
 {
     internal class TextureManager
     {
-        public static Texture2D texEnemyOrdinary, texTowerOrdinary, texBackground;
+        public static Texture2D texEnemyOrdinary, texTowerOrdinary, texBackground, texHeart;
 
         public static void LoadTextures(ContentManager content)
         {
             texEnemyOrdinary = content.Load<Texture2D>("EnemyOrdinary");
             texTowerOrdinary = content.Load<Texture2D>("TowerOrdinary");
             texBackground = content.Load<Texture2D>("Background");
+            texHeart = content.Load<Texture2D>("heart");
         }
     }
 }
