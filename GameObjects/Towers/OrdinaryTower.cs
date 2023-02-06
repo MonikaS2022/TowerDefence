@@ -17,9 +17,8 @@ namespace TowerDefence.Towers
         public Vector2 enemyPosition;
         public OrdinaryTower(Vector2 position, Texture2D texture) : base(position, texture)
         {
-            radius = 500;
+            radius = 200;
             towerTimer = new Timer();
-            
         }
 
         public override void Update(double deltaTime)
@@ -29,9 +28,8 @@ namespace TowerDefence.Towers
             if (EnemyIsFound() && towerTimer.IsDone())
             {
                 Shoot(GetDirection(position, enemyPosition));
-                towerTimer.ResetAndStart(5000);
+                towerTimer.ResetAndStart(2000);
             }
-            
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -60,7 +58,6 @@ namespace TowerDefence.Towers
             }
 
             return enemyFound;
-
         }
 
         public Vector2 GetDirection(Vector2 towerPos, Vector2 enemyPos)

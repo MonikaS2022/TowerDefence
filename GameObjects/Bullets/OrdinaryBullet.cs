@@ -22,6 +22,7 @@ namespace TowerDefence.Bullets
 
         public override void Update()
         {
+            base.Update();
             position += direction*speed;
         }
 

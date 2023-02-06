@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TowerDefence.Enemies;
+
 
 namespace TowerDefence.Bullets
 {
@@ -19,6 +21,19 @@ namespace TowerDefence.Bullets
             foreach(Bullet bullet in bulletList)
             {
                 bullet.Update();
+            }
+
+            foreach (Enemy enemy in EnemyManager.enemyList)
+            {
+                for (int i = 0; i < bulletList.Count; i++)
+                {
+                    if (bulletList[i].hitBox.Intersects(enemy.hitBox))
+                    {
+                        bulletList.RemoveAt(i);
+                        enemy.TakeDamage(1);
+                        i--;
+                    }
+                }
             }
         }
 

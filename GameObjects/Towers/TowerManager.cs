@@ -7,15 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TowerDefence.Bullets;
+using CatmullRom;
 
 namespace TowerDefence.Towers
 {
     public class TowerManager
     {
+        public CatmullRomPath cpath_road;
         public RenderTarget2D renderTarget;
         readonly GraphicsDevice device;
         public List<Tower> towerList;
         public OrdinaryTower towerOrdinary;
+        public StrongTower towerStrong;
 
         public TowerManager(GraphicsDevice device)
         {
@@ -38,13 +41,23 @@ namespace TowerDefence.Towers
             sb.Draw(renderTarget, Vector2.Zero, Color.White);
         }
 
-        public void CreateTower(int posX, int posY)
+        public void CreateOrdinaryTower(int posX, int posY)
         {
-            towerOrdinary = new OrdinaryTower(new Vector2(posX, posY), TextureManager.texTowerOrdinary);
+            towerOrdinary = new OrdinaryTower(new Vector2(posX, posY), TextureManager.texTurningTorso);
 
             if (CanPlace(towerOrdinary))
             {
                 towerList.Add(towerOrdinary);
+            }
+        }
+
+        public void CreateStrongTower(int posX, int posY)
+        {
+            towerStrong = new StrongTower(new Vector2(posX, posY), TextureManager.texTowerStrong);
+
+            if (CanPlace(towerStrong))
+            {
+                towerList.Add(towerStrong);
             }
         }
 
@@ -69,6 +82,8 @@ namespace TowerDefence.Towers
             return true;
         }
 
+        
+
         private void DrawOnRenderTarget(RenderTarget2D renderTarget)
         {
             SpriteBatch sb = new SpriteBatch(device);
@@ -76,7 +91,7 @@ namespace TowerDefence.Towers
             device.Clear(Color.Transparent);
             sb.Begin();
 
-            sb.Draw(TextureManager.texBackground, Vector2.Zero, Color.White);
+            //cpath_road.DrawFill(device, TextureManager.texRoad);
 
             foreach (Tower t in towerList)
             {
