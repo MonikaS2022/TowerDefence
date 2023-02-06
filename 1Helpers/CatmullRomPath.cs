@@ -214,7 +214,7 @@ namespace CatmullRom
 
             texture_controlPoints.SetData<Color>(new Color[] { color });
 
-            sb.Begin();
+            sb.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.LinearWrap, DepthStencilState.Default);
             for (int i = 1; i < controlPoints.Count - 1; i++)
             {
                 Vector2 pos = new Vector2((int)controlPoints[i].X, (int)controlPoints[i].Y);

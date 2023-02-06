@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TowerDefence.Enemies;
 
-
+// if tyhey dont hit? ta bort fron lista när ute av shkarmen
 namespace TowerDefence.Bullets
 {
     public static class BulletManager

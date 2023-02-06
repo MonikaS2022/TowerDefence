@@ -8,6 +8,8 @@ using CatmullRom;
 using System.IO;
 using System;
 using System.Collections.Generic;
+using SharpDX.Direct2D1;
+using SpriteBatch = Microsoft.Xna.Framework.Graphics.SpriteBatch;
 
 namespace TowerDefence
 {
@@ -51,7 +53,7 @@ namespace TowerDefence
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            TextureManager.LoadTextures(Content);
+            TextureManager.LoadTextures(Content, GraphicsDevice);
             DebugRectangle.Init(GraphicsDevice);
             enemyTimer = new Timer();
             enemyTimer.ResetAndStart(2000);
@@ -61,7 +63,7 @@ namespace TowerDefence
 
             cpath_road.Clear();
             LoadPathFromFile(cpath_road, "../../../road1.txt");
-            cpath_road.DrawFillSetup(GraphicsDevice, 50, 5, 26);
+            cpath_road.DrawFillSetup(GraphicsDevice, 25, 1, 256);
 
             wavesEnemyCounter = waveList[currentWave];
             gameStates = GameStates.MainMenu;
@@ -74,6 +76,19 @@ namespace TowerDefence
 
             if (gameStates == GameStates.MainMenu)
             {
+                //if (KeyMouseReader.RightClick())
+                //{
+                //    cpath_road.SetPoint(0, new Vector2(KeyMouseReader.mouseState.X, KeyMouseReader.mouseState.Y));
+                //}
+
+                //if (Keyboard.GetState().IsKeyDown(Keys.S))
+                //{
+                //    System.Diagnostics.Debug.WriteLine(cpath_road.GetPoints().Length);
+                //    SavePathToFile(cpath_road, "../../../newpath.txt");
+                //    LoadPathFromFile(cpath_road, "../../../newpath.txt");
+                //    gameStates = GameStates.Play;
+                //}
+
                 if (Keyboard.GetState().IsKeyDown(Keys.Enter))
                 {
                     gameStates = GameStates.Play;
@@ -138,6 +153,8 @@ namespace TowerDefence
                     int posY = KeyMouseReader.mouseState.Y;
                     towerManager.CreateStrongTower(posX, posY);
                 }
+
+                
             }
 
             if (gameStates == GameStates.GameOver)
@@ -153,16 +170,17 @@ namespace TowerDefence
             GraphicsDevice.Clear(Color.CornflowerBlue);
                        
             _spriteBatch.Begin();
+            _spriteBatch.Draw(TextureManager.texCityMap, new Rectangle(0, 0, 1280, 720), Color.White);
 
             if (gameStates == GameStates.MainMenu)
             {
                 //GraphicsDevice.Clear(Color.LavenderBlush);
-                _spriteBatch.Draw(TextureManager.texCityMap, new Vector2(0, 0), Color.White);
+                //_spriteBatch.Draw(TextureManager.texCityMap, new Rectangle(0, 0, 1280, 720), Color.White);
             }
 
             if (gameStates == GameStates.Play)
             {
-                _spriteBatch.Draw(TextureManager.texCityMap, new Vector2(0, 0), Color.White);
+                //_spriteBatch.Draw(TextureManager.texCityMap, new Rectangle(0, 0, 1280, 720), Color.White);
 
                 towerManager.Draw(_spriteBatch);
 
@@ -178,13 +196,14 @@ namespace TowerDefence
                 //    _spriteBatch.DrawRectangle(b.hitBox, Color.Blue);
                 //}
             }
-            
+
             if (gameStates == GameStates.GameOver)
             {
                 GraphicsDevice.Clear(Color.MediumSeaGreen);
             }
 
                 _spriteBatch.End();
+            //cpath_road.DrawPoints(_spriteBatch, Color.Black, 6);
 
             base.Draw(gameTime);
         }
@@ -200,7 +219,16 @@ namespace TowerDefence
 
         }
 
-       
+        void SavePathToFile(CatmullRomPath path, string file)
+        {
+            Vector2[] points = path.GetPoints();
+            string[] lines = new string[points.Length];
+            for (int i = 0; i < points.Length; i++)
+                lines[i] = ((int)(points[i].X)).ToString() + "," + ((int)points[i].Y).ToString();
+            System.IO.File.WriteAllLines(file, lines);
+        }
+
+
 
     }
 }

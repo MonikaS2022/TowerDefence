@@ -43,7 +43,7 @@ namespace TowerDefence.Towers
 
         public void CreateOrdinaryTower(int posX, int posY)
         {
-            towerOrdinary = new OrdinaryTower(new Vector2(posX, posY), TextureManager.texTurningTorso);
+            towerOrdinary = new OrdinaryTower(new Vector2(posX, posY), TextureManager.texTowerOrdinary);
 
             if (CanPlace(towerOrdinary))
             {
@@ -91,12 +91,15 @@ namespace TowerDefence.Towers
             device.Clear(Color.Transparent);
             sb.Begin();
 
+            cpath_road.DrawFill(device, TextureManager.texRoad);
             //cpath_road.DrawFill(device, TextureManager.texRoad);
+            
 
             foreach (Tower t in towerList)
             {
-                sb.Draw(t.texture, t.position, Color.White);
+                sb.Draw(t.texture, new Rectangle((int)t.position.X, (int)t.position.Y, 70, 70), Color.White);
             }
+
 
             sb.End();
 
