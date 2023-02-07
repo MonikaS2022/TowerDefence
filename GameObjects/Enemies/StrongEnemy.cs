@@ -14,7 +14,7 @@ namespace TowerDefence.Enemies
         public StrongEnemy(Vector2 position, Texture2D texture) : base(position, texture)
         {
             lives = 5;
-            speed = 0.0001f;
+            speed = 0.00008f;
             color = Color.Red;
         }
 

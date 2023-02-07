@@ -15,7 +15,7 @@ namespace TowerDefence.Enemies
         public OrdinaryEnemy(Vector2 position, Texture2D texture) : base(position, texture)
         {
             lives = 3;
-            speed = 0.00001f;
+            speed = 0.00005f;
             color = Color.White;
         }
 

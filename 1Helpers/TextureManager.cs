@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 using System.Drawing;
 
 
@@ -8,8 +9,8 @@ namespace TowerDefence
     internal class TextureManager
         
     {
-        readonly GraphicsDevice device;
-        public static Texture2D texEnemyOrdinary, texTowerStrong, texTowerOrdinary, texBackground, texHeart, texCar, texCityMap, texRoad, texTurningTorso, texRed;
+        
+        public static Texture2D texEnemyOrdinary, texTowerStrong, texTowerOrdinary, texBackground, texHeart, texCar, texCityMap, texRoad, texTurningTorso;
 
         public static void LoadTextures(ContentManager content, GraphicsDevice device)
         {
@@ -21,10 +22,9 @@ namespace TowerDefence
             texCar = content.Load<Texture2D>("car");
             texRoad = content.Load<Texture2D>("roadGrey");
             texCityMap = content.Load<Texture2D>("map2");
-
             texTurningTorso = content.Load<Texture2D>("turningTorso");
-            texRed = new Texture2D(device, 1, 1, false, SurfaceFormat.Color);
-            //texRed.SetData<Color>(new Color[] { Color.Red });
+            
         }
     }
 }
+

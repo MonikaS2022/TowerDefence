@@ -17,7 +17,6 @@ namespace TowerDefence.Enemies
 {
     public static class EnemyManager
     {
-        //public static OrdinaryEnemy ordinaryEnemy; //this would be one static enemy instance.
         public static List<Enemy> enemyList = new List<Enemy>();
 
         public static void Update(float deltaTime, CatmullRomPath path)
@@ -57,6 +56,8 @@ namespace TowerDefence.Enemies
                         i--;
                     }
                 }
+
+
             }
         }
 

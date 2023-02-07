@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TowerDefence", "TowerDefence.csproj", "{87C1307A-E1D7-4A69-9321-E6FE48FF41D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TowerDefence", "TowerDefence.csproj", "{87C1307A-E1D7-4A69-9321-E6FE48FF41D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Table", "..\Table\Table.csproj", "{D4A4B9D3-4053-4E14-AD0C-DE109B3FFCA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{87C1307A-E1D7-4A69-9321-E6FE48FF41D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87C1307A-E1D7-4A69-9321-E6FE48FF41D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87C1307A-E1D7-4A69-9321-E6FE48FF41D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4A4B9D3-4053-4E14-AD0C-DE109B3FFCA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4A4B9D3-4053-4E14-AD0C-DE109B3FFCA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4A4B9D3-4053-4E14-AD0C-DE109B3FFCA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4A4B9D3-4053-4E14-AD0C-DE109B3FFCA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
