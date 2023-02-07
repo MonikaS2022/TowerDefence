@@ -17,7 +17,6 @@ namespace TowerDefence
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         Form1 myForm;
-        //ParticleSystem particleSystem;
 
         Timer enemyTimer;
         GameStates gameStates;
@@ -84,18 +83,7 @@ namespace TowerDefence
 
             if (gameStates == GameStates.MainMenu)
             {
-                //if (KeyMouseReader.RightClick())
-                //{
-                //    cpath_road.SetPoint(0, new Vector2(KeyMouseReader.mouseState.X, KeyMouseReader.mouseState.Y));
-                //}
-
-                //if (Keyboard.GetState().IsKeyDown(Keys.S))
-                //{
-                //    System.Diagnostics.Debug.WriteLine(cpath_road.GetPoints().Length);
-                //    SavePathToFile(cpath_road, "../../../newpath.txt");
-                //    LoadPathFromFile(cpath_road, "../../../newpath.txt");
-                //    gameStates = GameStates.Play;
-                //}
+                
                 if(myForm.IsStarted)
                 {
                     gameStates = GameStates.Play;
@@ -103,20 +91,10 @@ namespace TowerDefence
                 }
             }
 
-                //if (Keyboard.GetState().IsKeyDown(Keys.Enter))
-                //{
-                //    gameStates = GameStates.Play;
-                //}
-            
-
             if (gameStates == GameStates.Play)
             {
-               
-
-                enemyTimer.Update(gameTime.ElapsedGameTime.TotalMilliseconds);
-
-                
-
+               enemyTimer.Update(gameTime.ElapsedGameTime.TotalMilliseconds);
+                             
 
                 if (wavesEnemyCounter != 0)
                 {
@@ -171,9 +149,7 @@ namespace TowerDefence
                     towerManager.CreateStrongTower(posX, posY);
                 }
 
-                //particleSystem.EmitterLocation = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
-                //particleSystem.Update();
-
+              
             }
 
             if (gameStates == GameStates.GameOver)
@@ -193,26 +169,15 @@ namespace TowerDefence
 
             if (gameStates == GameStates.MainMenu)
             {
-                //GraphicsDevice.Clear(Color.LavenderBlush);
-                //_spriteBatch.Draw(TextureManager.texCityMap, new Rectangle(0, 0, 1280, 720), Color.White);
             }
 
             if (gameStates == GameStates.Play)
             {
-                //_spriteBatch.Draw(TextureManager.texCityMap, new Rectangle(0, 0, 1280, 720), Color.White);
                 towerManager.Draw(_spriteBatch);
 
                 EnemyManager.Draw(_spriteBatch);
-                //foreach (Enemy e in EnemyManager.enemyList)
-                //{
-                //    _spriteBatch.DrawRectangle(e.hitBox, Color.Red);
-                //}
 
                 BulletManager.Draw(_spriteBatch);
-                //foreach (Bullet b in BulletManager.bulletList)
-                //{
-                //    _spriteBatch.DrawRectangle(b.hitBox, Color.Blue);
-                //}
             }
 
             if (gameStates == GameStates.GameOver)
@@ -221,9 +186,6 @@ namespace TowerDefence
             }
 
             _spriteBatch.End();
-            //particleSystem.Draw(_spriteBatch);
-
-            //cpath_road.DrawPoints(_spriteBatch, Color.Black, 6);
 
             base.Draw(gameTime);
         }

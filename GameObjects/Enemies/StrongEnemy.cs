@@ -35,7 +35,7 @@ namespace TowerDefence.Enemies
         public override void TakeDamage(int i)
         {
             lives = lives - i;
-            color.A -= 54;
+            //color.A += 54;
             speed -= 0.000003f;
         }
     }

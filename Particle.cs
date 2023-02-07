@@ -15,7 +15,7 @@ namespace TowerDefence
         public Vector2 Velocity { get; set; }
         public float Angle { get; set; }
         public float AngularVelocity { get; set; }
-        public Color Color { get; set; }
+        public Color color; //{ get; set; }
         public float Size { get; set; }
         public int TTL { get; set; } //Time to Live
 
@@ -28,7 +28,7 @@ namespace TowerDefence
             Velocity = velocity;
             Angle = angle;
             AngularVelocity = angularVelocity;
-            Color = color;
+            this.color = color;
             Size = size;
             TTL = tTL;
         }
@@ -44,7 +44,7 @@ namespace TowerDefence
         {
             Rectangle sourceRectangle = new Rectangle ( 0,0, Texture.Width, Texture.Height );
             Vector2 origin = new Vector2(Texture.Width / 2, Texture.Height / 2);
-            spriteBatch.Draw(Texture, Position, sourceRectangle, Color, Angle, origin, Size, SpriteEffects.None, 0f);
+            spriteBatch.Draw(Texture, Position, sourceRectangle, color, Angle, origin, Size, SpriteEffects.None, 0f);
         }
 
     }

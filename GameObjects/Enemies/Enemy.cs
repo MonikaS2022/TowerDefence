@@ -28,7 +28,7 @@ namespace TowerDefence.Enemies
         public Enemy(Vector2 position, Texture2D texture) : base(position, texture)
         {
             hitBox = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
-            textures.Add(TextureManager.texHeart);
+            textures.Add(TextureManager.texParticle);
             particleSystem = new ParticleSystem(textures, new Vector2(400, 240));
         }
 
@@ -36,7 +36,7 @@ namespace TowerDefence.Enemies
         {
             hitBox.Location = position.ToPoint();
             particleSystem.EmitterLocation = position;
-            particleSystem.Update();
+            particleSystem.Update(color);
 
         }
 

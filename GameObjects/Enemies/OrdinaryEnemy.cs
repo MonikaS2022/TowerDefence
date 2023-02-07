@@ -10,13 +10,17 @@ namespace TowerDefence.Enemies
 {
     public class OrdinaryEnemy : Enemy
     {
-        
+        private Random random = new Random();
 
         public OrdinaryEnemy(Vector2 position, Texture2D texture) : base(position, texture)
         {
-            lives = 3;
+            lives = 5;
             speed = 0.00005f;
-            color = Color.White;
+            color = new Color(
+                    (float)random.NextDouble(),
+                    (float)random.NextDouble(),
+                    (float)random.NextDouble());
+            color.A = 1;
         }
 
         public override void Update(Vector2 pos)
@@ -35,7 +39,12 @@ namespace TowerDefence.Enemies
         public override void TakeDamage(int i)
         {
             lives = lives - i;
-            color.A -= 80;
+            color.A += 45;
+            color.R += (byte)random.Next(1, 255);
+            color.G += (byte)random.Next(1, 255); 
+            color.B += (byte)random.Next(1, 255); 
+            
+
         }
     }
 }

@@ -19,6 +19,7 @@ namespace TowerDefence.Enemies
     {
         public static List<Enemy> enemyList = new List<Enemy>();
 
+
         public static void Update(float deltaTime, CatmullRomPath path)
         {
             for(int i = 0; i < enemyList.Count; i++)
@@ -63,14 +64,14 @@ namespace TowerDefence.Enemies
 
         public static void CreateEnemy(Vector2 position)
         {
-            Enemy ordinaryEnemy = new OrdinaryEnemy(position, TextureManager.texEnemyOrdinary);
+            Enemy ordinaryEnemy = new OrdinaryEnemy(position, TextureManager.texEnemy);
             ordinaryEnemy.totalDistanceTravelled = 0.0f;
             EnemyManager.enemyList.Add(ordinaryEnemy);
         }
 
         public static void CreateStrongEnemy(Vector2 position)
         {
-            Enemy strongEnemy = new StrongEnemy(position, TextureManager.texEnemyOrdinary);
+            Enemy strongEnemy = new StrongEnemy(position, TextureManager.texEnemy);
             strongEnemy.totalDistanceTravelled = 0.0f;
             EnemyManager.enemyList.Add(strongEnemy);
         }

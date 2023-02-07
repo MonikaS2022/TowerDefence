@@ -24,7 +24,7 @@ namespace TowerDefence
             random = new Random();
         }
 
-        private Particle GenerateNewParticle()
+        private Particle GenerateNewParticle(Color color)
         {
             Texture2D texture = textures[random.Next(textures.Count)];
             Vector2 position = EmitterLocation;
@@ -33,27 +33,31 @@ namespace TowerDefence
                     1f * (float)(random.NextDouble() * 2 - 1));
             float angle = 0;
             float angularVelocity = 0.1f * (float)(random.NextDouble() * 2 - 1);
-            Color color = new Color(
-                    (float)random.NextDouble(),
-                    (float)random.NextDouble(),
-                    (float)random.NextDouble());
+            //Color color = new Color(
+            //        (float)random.NextDouble(),
+            //        (float)random.NextDouble(),
+            //        (float)random.NextDouble());
+            
             float size = (float)random.NextDouble();
             int ttl = 20 + random.Next(40);
 
             return new Particle(texture, position, velocity, angle, angularVelocity, color, size, ttl);
         }
 
-        public void Update()
+        public void Update(Color color)
         {
-            int total = 10;
+            int total = 2;
 
             for (int i = 0; i < total; i++)
             {
-                particles.Add(GenerateNewParticle());
+                particles.Add(GenerateNewParticle(color));
             }
 
             for (int particle = 0; particle < particles.Count; particle++)
             {
+                particles[particle].color.A -= 30;
+                
+
                 particles[particle].Update();
                 if (particles[particle].TTL <= 0)
                 {
