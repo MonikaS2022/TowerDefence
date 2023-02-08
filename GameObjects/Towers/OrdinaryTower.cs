@@ -17,7 +17,7 @@ namespace TowerDefence.Towers
         public Vector2 enemyPosition;
         public OrdinaryTower(Vector2 position, Texture2D texture) : base(position, texture)
         {
-            radius = 200;
+            radius = 150;
             towerTimer = new Timer();
         }
 

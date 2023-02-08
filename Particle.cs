@@ -38,6 +38,9 @@ namespace TowerDefence
             TTL--;
             Position += Velocity;
             Angle += AngularVelocity;
+            //color.A -= 2;
+            color.B -= 2;
+            color.R -= 2;
         }
 
         public void Draw(SpriteBatch spriteBatch)

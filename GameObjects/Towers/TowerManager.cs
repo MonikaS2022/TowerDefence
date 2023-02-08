@@ -45,19 +45,29 @@ namespace TowerDefence.Towers
         {
             towerOrdinary = new OrdinaryTower(new Vector2(posX, posY), TextureManager.texTowerOrdinary);
 
-            if (CanPlace(towerOrdinary))
+            if (Points.points >= 200)
             {
-                towerList.Add(towerOrdinary);
+                if (CanPlace(towerOrdinary))
+                {
+                    towerList.Add(towerOrdinary);
+                    Points.RemovePoints(200);
+
+                }
             }
+
         }
 
         public void CreateStrongTower(int posX, int posY)
         {
             towerStrong = new StrongTower(new Vector2(posX, posY), TextureManager.texTowerStrong);
 
-            if (CanPlace(towerStrong))
+            if (Points.points >= 400)
             {
-                towerList.Add(towerStrong);
+                if (CanPlace(towerStrong))
+                {
+                    towerList.Add(towerStrong);
+                    Points.RemovePoints(400);
+                }
             }
         }
 

@@ -47,6 +47,7 @@ namespace TowerDefence.Enemies
                 {
                     enemyList.RemoveAt(i);
                     i--;
+                    Points.AddAmount(1);
                     continue;
                 }
                 if (enemyList.Count != 0)
@@ -71,7 +72,7 @@ namespace TowerDefence.Enemies
 
         public static void CreateStrongEnemy(Vector2 position)
         {
-            Enemy strongEnemy = new StrongEnemy(position, TextureManager.texEnemy);
+            Enemy strongEnemy = new StrongEnemy(position, TextureManager.texEnemyStrong);
             strongEnemy.totalDistanceTravelled = 0.0f;
             EnemyManager.enemyList.Add(strongEnemy);
         }

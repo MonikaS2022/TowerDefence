@@ -15,7 +15,7 @@ namespace TowerDefence.Enemies
         {
             lives = 5;
             speed = 0.00008f;
-            color = Color.Red;
+            color = new Color(255, 200, 150);
         }
 
         public override void Update(Vector2 pos)
@@ -24,7 +24,6 @@ namespace TowerDefence.Enemies
             this.position.X = pos.X;
             this.position.Y = pos.Y;
         }
-
         
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -35,8 +34,9 @@ namespace TowerDefence.Enemies
         public override void TakeDamage(int i)
         {
             lives = lives - i;
-            //color.A += 54;
+            color.A -= 51;
             speed -= 0.000003f;
+            Points.AddPoints(100);
         }
     }
 }

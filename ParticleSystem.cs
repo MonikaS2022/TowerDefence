@@ -33,11 +33,7 @@ namespace TowerDefence
                     1f * (float)(random.NextDouble() * 2 - 1));
             float angle = 0;
             float angularVelocity = 0.1f * (float)(random.NextDouble() * 2 - 1);
-            //Color color = new Color(
-            //        (float)random.NextDouble(),
-            //        (float)random.NextDouble(),
-            //        (float)random.NextDouble());
-            
+                       
             float size = (float)random.NextDouble();
             int ttl = 20 + random.Next(40);
 
@@ -55,7 +51,7 @@ namespace TowerDefence
 
             for (int particle = 0; particle < particles.Count; particle++)
             {
-                particles[particle].color.A -= 30;
+                //particles[particle].color.B -= 30;
                 
 
                 particles[particle].Update();

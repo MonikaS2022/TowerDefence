@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SharpDX.Direct2D1.Effects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +15,12 @@ namespace TowerDefence.Enemies
 
         public OrdinaryEnemy(Vector2 position, Texture2D texture) : base(position, texture)
         {
-            lives = 5;
+            lives = random.Next(5, 8);
             speed = 0.00005f;
-            color = new Color(
+            color = new Color((float)random.NextDouble(),
                     (float)random.NextDouble(),
-                    (float)random.NextDouble(),
-                    (float)random.NextDouble());
-            color.A = 1;
+                    (float)random.NextDouble(), 1f);
+            
         }
 
         public override void Update(Vector2 pos)
@@ -39,11 +39,10 @@ namespace TowerDefence.Enemies
         public override void TakeDamage(int i)
         {
             lives = lives - i;
-            color.A += 45;
             color.R += (byte)random.Next(1, 255);
             color.G += (byte)random.Next(1, 255); 
-            color.B += (byte)random.Next(1, 255); 
-            
+            color.B += (byte)random.Next(1, 255);
+            Points.AddPoints(50);
 
         }
     }

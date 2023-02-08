@@ -29,6 +29,10 @@ namespace TowerDefence.Bullets
                 {
                     if (bulletList[i].hitBox.Intersects(enemy.hitBox))
                     {
+                        if (bulletList[i] is StrongBullet)
+                        {
+                            enemy.speed -= 0.000002f;
+                        }
                         bulletList.RemoveAt(i);
                         enemy.TakeDamage(1);
                         i--;
@@ -40,6 +44,12 @@ namespace TowerDefence.Bullets
         public static void CreateBullet(Vector2 direction, Vector2 position)
         {
             OrdinaryBullet bullet = new OrdinaryBullet(direction, position, TextureManager.texHeart);
+            bulletList.Add(bullet);
+        }
+
+        public static void CreateStrongBullet(Vector2 direction, Vector2 position)
+        {
+            StrongBullet bullet = new StrongBullet(direction, position, TextureManager.texHeart);
             bulletList.Add(bullet);
         }
 

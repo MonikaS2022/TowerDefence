@@ -44,7 +44,6 @@ namespace TowerDefence.Enemies
         {
             spriteBatch.Draw(texture, pos, null, color, angle, new Vector2(40 / 2, 40 / 2), new Vector2(1f, 1f), SpriteEffects.None, 0.0f);
             particleSystem.Draw(spriteBatch);
-
         }
 
         public virtual void TakeDamage(int i)

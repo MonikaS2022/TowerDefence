@@ -16,13 +16,14 @@ namespace TowerDefence
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private SpriteFont pointFont;
         Form1 myForm;
 
         Timer enemyTimer;
         GameStates gameStates;
         
 
-        List <int> waveList = new List<int>(){ 2, 3, 4 };
+        List <int> waveList = new List<int>(){ 8, 12, 20 };
         int currentWave = 0;
         int wavesEnemyCounter;
 
@@ -58,6 +59,7 @@ namespace TowerDefence
             List<Texture2D> textures = new List<Texture2D>();
             textures.Add(Content.Load<Texture2D>("star"));
             textures.Add(Content.Load<Texture2D>("diamond"));
+            pointFont = Content.Load<SpriteFont>("points");
 
 
             TextureManager.LoadTextures(Content, GraphicsDevice);
@@ -149,6 +151,10 @@ namespace TowerDefence
                     towerManager.CreateStrongTower(posX, posY);
                 }
 
+                if(Points.points >= 1000)
+                {
+                    Points.AddDonation(Points.points);
+                }
               
             }
 
@@ -169,10 +175,28 @@ namespace TowerDefence
 
             if (gameStates == GameStates.MainMenu)
             {
+                _spriteBatch.DrawString(pointFont, "THE GALLERY was ROBBED!", new Vector2(440, 350), Color.White);
+                _spriteBatch.DrawString(pointFont, "Get our COLORS back!", new Vector2(440, 450), Color.White);
+
+
+
             }
 
             if (gameStates == GameStates.Play)
             {
+                _spriteBatch.DrawString(pointFont, "If you reach 1000 colors, it will be donated double", new Vector2(10, 590), Color.White);
+
+                _spriteBatch.DrawString(pointFont, "You donated: " + Points.donations + " colors", new Vector2(10, 610), Color.White);
+
+                _spriteBatch.DrawString(pointFont, "You have: " + Points.points + " colors", new Vector2(10, 630), Color.White);
+
+                _spriteBatch.Draw(TextureManager.texTowerOrdinary, new Rectangle(10, 660, 20, 20), Color.White);
+                _spriteBatch.DrawString(pointFont, "Cost: 100 colors. Press right to build.", new Vector2(40, 660), Color.White);
+
+                _spriteBatch.Draw(TextureManager.texTowerStrong, new Rectangle(10, 690, 20, 20), Color.White);
+                _spriteBatch.DrawString(pointFont, "Cost: 200 colors. Press left to build.", new Vector2(40, 690), Color.White);
+
+
                 towerManager.Draw(_spriteBatch);
 
                 EnemyManager.Draw(_spriteBatch);
@@ -183,6 +207,10 @@ namespace TowerDefence
             if (gameStates == GameStates.GameOver)
             {
                 GraphicsDevice.Clear(Color.MediumSeaGreen);
+                _spriteBatch.DrawString(pointFont, "You have saved " + Points.amount + " paintings", new Vector2(640, 350), Color.White);
+                _spriteBatch.DrawString(pointFont, "You have donated " + Points.donations + ".", new Vector2(640, 370), Color.White);
+
+
             }
 
             _spriteBatch.End();
