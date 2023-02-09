@@ -58,14 +58,12 @@ namespace TowerDefence.Enemies
                         i--;
                     }
                 }
-
-
             }
         }
 
         public static void CreateEnemy(Vector2 position)
         {
-            Enemy ordinaryEnemy = new OrdinaryEnemy(position, TextureManager.texEnemy);
+            Enemy ordinaryEnemy = new OrdinaryEnemy(position, TextureManager.texEnemyOrdinary);
             ordinaryEnemy.totalDistanceTravelled = 0.0f;
             EnemyManager.enemyList.Add(ordinaryEnemy);
         }

@@ -16,7 +16,7 @@ namespace TowerDefence
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private SpriteFont pointFont;
+        private SpriteFont pointFont, bigFont, bigItalicFont;
         Form1 myForm;
 
         Timer enemyTimer;
@@ -56,11 +56,10 @@ namespace TowerDefence
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             myForm = new Form1();
             myForm.Show();
-            List<Texture2D> textures = new List<Texture2D>();
-            textures.Add(Content.Load<Texture2D>("star"));
-            textures.Add(Content.Load<Texture2D>("diamond"));
+            
             pointFont = Content.Load<SpriteFont>("points");
-
+            bigFont = Content.Load<SpriteFont>("bigFont");
+            bigItalicFont = Content.Load<SpriteFont>("bigItalicFont");
 
             TextureManager.LoadTextures(Content, GraphicsDevice);
             DebugRectangle.Init(GraphicsDevice);
@@ -75,7 +74,7 @@ namespace TowerDefence
             cpath_road.DrawFillSetup(GraphicsDevice, 25, 1, 256);
 
             wavesEnemyCounter = waveList[currentWave];
-            gameStates = GameStates.MainMenu;
+            gameStates = GameStates.GameOver;
         }
 
         protected override void Update(GameTime gameTime)
@@ -171,12 +170,12 @@ namespace TowerDefence
             GraphicsDevice.Clear(Color.CornflowerBlue);
                        
             _spriteBatch.Begin();
-            _spriteBatch.Draw(TextureManager.texCityMap, new Rectangle(0, 0, 1280, 720), Color.White);
+            _spriteBatch.Draw(TextureManager.texBackground, new Rectangle(0, 0, 1280, 720), Color.White);
 
             if (gameStates == GameStates.MainMenu)
             {
-                _spriteBatch.DrawString(pointFont, "THE GALLERY was ROBBED!", new Vector2(440, 350), Color.White);
-                _spriteBatch.DrawString(pointFont, "Get our COLORS back!", new Vector2(440, 450), Color.White);
+                _spriteBatch.DrawString(bigFont, "THE GALLERY was ROBBED!", new Vector2(440, 350), Color.White);
+                _spriteBatch.DrawString(bigItalicFont, "Get our COLORS back!", new Vector2(445, 430), Color.White);
 
 
 
@@ -184,17 +183,18 @@ namespace TowerDefence
 
             if (gameStates == GameStates.Play)
             {
-                _spriteBatch.DrawString(pointFont, "If you reach 1000 colors, it will be donated double", new Vector2(10, 590), Color.White);
+                _spriteBatch.DrawString(pointFont, "You have: " + Points.points + " colors", new Vector2(10, 580), Color.White);
 
-                _spriteBatch.DrawString(pointFont, "You donated: " + Points.donations + " colors", new Vector2(10, 610), Color.White);
+                _spriteBatch.DrawString(pointFont, "Reach 1000 colors and it will be donated double", new Vector2(12, 600), Color.White);
 
-                _spriteBatch.DrawString(pointFont, "You have: " + Points.points + " colors", new Vector2(10, 630), Color.White);
+                _spriteBatch.DrawString(pointFont, "You donated: " + Points.donations + " colors", new Vector2(10, 620), Color.White);
+
 
                 _spriteBatch.Draw(TextureManager.texTowerOrdinary, new Rectangle(10, 660, 20, 20), Color.White);
-                _spriteBatch.DrawString(pointFont, "Cost: 100 colors. Press right to build.", new Vector2(40, 660), Color.White);
+                _spriteBatch.DrawString(pointFont, "Ordinary. Cost: 100 colors. Press right to build.", new Vector2(40, 660), Color.White);
 
                 _spriteBatch.Draw(TextureManager.texTowerStrong, new Rectangle(10, 690, 20, 20), Color.White);
-                _spriteBatch.DrawString(pointFont, "Cost: 200 colors. Press left to build.", new Vector2(40, 690), Color.White);
+                _spriteBatch.DrawString(pointFont, "Strong - slows down enemies; wider range. Cost: 200 colors. Press left to build.", new Vector2(40, 690), Color.White);
 
 
                 towerManager.Draw(_spriteBatch);
@@ -207,8 +207,8 @@ namespace TowerDefence
             if (gameStates == GameStates.GameOver)
             {
                 GraphicsDevice.Clear(Color.MediumSeaGreen);
-                _spriteBatch.DrawString(pointFont, "You have saved " + Points.amount + " paintings", new Vector2(640, 350), Color.White);
-                _spriteBatch.DrawString(pointFont, "You have donated " + Points.donations + ".", new Vector2(640, 370), Color.White);
+                _spriteBatch.DrawString(bigFont, "You have saved " + Points.amount + " paintings", new Vector2(440, 350), Color.White);
+                _spriteBatch.DrawString(bigItalicFont, "You have donated " + Points.donations + ".", new Vector2(445, 430), Color.White);
 
 
             }
