@@ -8,7 +8,7 @@ using CatmullRom;
 using System.IO;
 using System;
 using System.Collections.Generic;
-using Table;
+//using Table;
 
 namespace TowerDefence
 {
@@ -17,7 +17,7 @@ namespace TowerDefence
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private SpriteFont pointFont, bigFont, bigItalicFont;
-        Form1 myForm;
+        //Form1 myForm;
 
         Timer enemyTimer;
         GameStates gameStates;
@@ -54,8 +54,8 @@ namespace TowerDefence
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            myForm = new Form1();
-            myForm.Show();
+            //myForm = new Form1();
+            //myForm.Show();
             
             pointFont = Content.Load<SpriteFont>("points");
             bigFont = Content.Load<SpriteFont>("bigFont");
@@ -74,7 +74,8 @@ namespace TowerDefence
             cpath_road.DrawFillSetup(GraphicsDevice, 25, 1, 256);
 
             wavesEnemyCounter = waveList[currentWave];
-            gameStates = GameStates.GameOver;
+            //gameStates = GameStates.GameOver;
+            gameStates = GameStates.Play;
         }
 
         protected override void Update(GameTime gameTime)
@@ -84,12 +85,12 @@ namespace TowerDefence
 
             if (gameStates == GameStates.MainMenu)
             {
-                
+                /*
                 if(myForm.IsStarted)
                 {
                     gameStates = GameStates.Play;
                     myForm.Hide();
-                }
+                }*/
             }
 
             if (gameStates == GameStates.Play)
